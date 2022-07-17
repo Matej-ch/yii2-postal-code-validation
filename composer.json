@@ -1,0 +1,38 @@
+{
+  "name": "matejch/yii2-postal-code-validation",
+  "description": "Validation rules for active record models",
+  "type": "yii2-extension",
+  "keywords": ["yii2","extension","zip code","postal code","psc"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matej Ch",
+      "email": "matejCH.work@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "yiisoft/yii2": "~2.0.40"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "matejch\\postalCodeValidation\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "matejch\\postalCodeValidation\\tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
+}
