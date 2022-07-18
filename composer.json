@@ -12,7 +12,8 @@
   ],
   "require": {
     "php": ">=7.2.0",
-    "yiisoft/yii2": "~2.0.40"
+    "yiisoft/yii2": "~2.0.40",
+    "ext-curl": "*"
   },
   "repositories": [
     {
