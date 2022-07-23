@@ -12,7 +12,7 @@ $countries = explode('~',json_decode($data,true)['countries']);
 $responses = [];
 echo "Fetching country data...\r\n";
 foreach ($countries as $country) {
-    usleep(1000000);
+    usleep(500000);
     echo "Country $country\r\n";
     $responses[] = fileGetContentsCurl("$baseUrl/$country");
 }
@@ -61,11 +61,11 @@ return [\n");
 
     $keyValueString = '';
     foreach ($data as $key => $zip) {
-        $keyValueString .= "\t'$key' =>'$zip'\n";
+        $keyValueString .= "\t'$key' =>'$zip',\n";
     }
 
     fwrite($handle, stripslashes($keyValueString));
-    fwrite($handle, "]\n");
+    fwrite($handle, "];\n");
     fclose($handle);
 }
 
@@ -75,11 +75,14 @@ function fileGetContentsCurl($url)
 {
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt_array($ch, [
+        CURLOPT_HEADER => false,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_URL => $url,
+    ]);
+
     $data = curl_exec($ch);
     curl_close($ch);
 
